@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PostsAdmin from "./PostsAdmin";
 import Axios from "axios";
+import Navbar from "../components/Navbar";
 
 const Admin = () => {
 	const [posts, setPosts] = useState([]);
@@ -33,6 +34,7 @@ const Admin = () => {
 
 	return (
 		<section className='admin'>
+			<Navbar />
 			<main>
 				<form onSubmit={(e) => addpost(e)}>
 					<input
@@ -73,7 +75,6 @@ const Admin = () => {
 					/>
 				</form>
 			</main>
-			<button onClick={addpost}>add</button>
 			<PostsAdmin
 				posts={posts}
 				setPosts={setPosts}

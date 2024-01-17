@@ -7,8 +7,10 @@ const PostItem = ({ post }) => {
 				src={localServer + post.img}
 				alt={post.title}
 			/>
-			<h2>{post.title}</h2>
-			<p>{post.content}</p>
+			<div>
+				<h2>{post.title}</h2>
+				<p>{post.content}</p>
+			</div>
 		</article>
 	);
 };

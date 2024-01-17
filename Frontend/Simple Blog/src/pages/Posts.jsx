@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PostItem from "../components/PostItem";
+import Navbar from "../components/Navbar";
 
 const Posts = () => {
 	const [posts, setPosts] = useState([]);
@@ -14,8 +15,8 @@ const Posts = () => {
 	}, []);
 	return (
 		<section className='posts'>
+			<Navbar />
 			<main>
-				<h1>posts</h1>
 				{posts.map((post) => (
 					<PostItem
 						post={post}
