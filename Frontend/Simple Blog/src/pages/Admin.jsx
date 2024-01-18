@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import PostsAdmin from "./PostsAdmin";
-import Axios from "axios";
 import Navbar from "../components/Navbar";
 
 const Admin = () => {
@@ -20,8 +19,15 @@ const Admin = () => {
 			.catch((err) => console.log(err));
 	}, []);
 	const addpost = (e) => {
-		const fd = new FormData(e.target);
-		Axios.post("http://localhost:3000/api/posts/uploadimg", fd)
+		event.preventDefault();
+		const fd = new FormData();
+		fd.append("postContent", newPost.postContent);
+		fd.append("postTitle", newPost.postTitle);
+		fd.append("postImg", newPost.img, newPost.img.name);
+		fetch("http://localhost:3000/api/posts/uploadimg", {
+			method: "POST",
+			body: fd,
+		})
 			.then((res) => res.json())
 			.then((success, result, error) => {
 				if (!success) console.log(error);
